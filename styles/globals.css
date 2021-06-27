@@ -26,6 +26,13 @@ a {
   --accent-dark: #106ebe;
 }
 
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+  transition: all 400ms !important;
+  transition-delay: 0 !important;
+}
 
 body {
   margin: 0;
