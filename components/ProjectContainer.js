@@ -35,6 +35,12 @@ function ProjectContainer() {
             tech:"ReactJS & Redux",
             url:"https://tusharraj13.github.io/Wordcamp-React-App/"
         },
+        {
+            name:"HTML Editor",
+            img:"/project/html.jpeg",
+            tech:"ReactJS & Redux",
+            url:"https://tusharraj13.github.io/HTML-Editor/"
+        }
     ]
 
     return (
