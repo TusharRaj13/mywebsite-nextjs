@@ -25,13 +25,13 @@ export default function Home() {
         <meta name="twitter:description" content="Tushar Raj's official website powered by NextJS and hosted on Azure Static Web App"/>
         <meta name="twitter:site" content="@"/>
         <meta name="twitter:creator" content="@"/>
-        <meta name="twitter:image" content="/android-chorome-512x512.png"/>
+        <meta name="twitter:image" content="/android-chrome-512x512.png"/>
         <meta property="og:title" content="Tushar Raj Gupta"/>
         <meta property="og:description" content="Tushar Raj's official website powered by NextJS and hosted on Azure Static Web App"/>
         <meta property="og:url" content="www.tusharrajgupta.com"/>
         <meta property="og:site_name" content="undefined"/>
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content="/android-chorome-512x512.png"/>
+        <meta property="og:image" content="/android-chrome-512x512.png"/>
         {/* <link rel="manifest" href="/site.webmanifest"></link> */}
       </Head>
       <NavBar/>
