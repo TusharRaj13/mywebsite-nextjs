@@ -20,7 +20,7 @@ function AboutContent() {
                     </p>                    
                 </div>
                 <br/>
-                <a target="_black" rel="noreferrer" href="https://tusharrajgupta.blob.core.windows.net/docs/TusharRajGupta.pdf" className="btn">Download Resume</a>
+                <a target="_blank" rel="noreferrer" href="https://tusharrajgupta.blob.core.windows.net/docs/TusharRajGupta.pdf" className="btn">Download Resume</a>
             </section>
     )
 }
