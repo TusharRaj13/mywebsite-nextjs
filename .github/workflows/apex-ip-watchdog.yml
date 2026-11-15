@@ -1,0 +1,67 @@
+# Hourly check that the bare domain (tusharrajgupta.in) still points at the Static Web App.
+#
+# GoDaddy can't point the bare domain at Azure by name, so it uses an A record with the app's IP.
+# Azure doesn't guarantee that IP stays the same. If it changes, this run fails and GitHub emails
+# you the new IP: update the "A @" record in GoDaddy DNS to that value.
+
+name: Bare domain IP watchdog
+
+on:
+  schedule:
+    - cron: "17 * * * *" # hourly, at :17 (off the hour, when GitHub's schedulers are less busy)
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      APEX: tusharrajgupta.in
+      APP_HOST: salmon-smoke-0b4d4610f.azurestaticapps.net
+    steps:
+      - name: Compare the bare domain's A record with the app's current IP
+        run: |
+          set -euo pipefail
+          resolve() { dig +short "$1" A @1.1.1.1 | grep -E '^[0-9]+(\.[0-9]+){3}$' | sort -u || true; }
+
+          app_ips=$(resolve "$APP_HOST")
+          apex_ips=$(resolve "$APEX")
+          echo "App ($APP_HOST): $(echo $app_ips)"
+          echo "Bare domain ($APEX): $(echo $apex_ips)"
+
+          {
+            echo "### Bare domain IP check"
+            echo "| | IP |"
+            echo "|---|---|"
+            echo "| App \`$APP_HOST\` | $(echo $app_ips) |"
+            echo "| Bare domain \`$APEX\` | $(echo $apex_ips) |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -z "$app_ips" ]; then
+            echo "::warning::Could not look up $APP_HOST right now; skipping this run."
+            exit 0
+          fi
+
+          # OK when every IP the bare domain points to is one the app currently uses.
+          stale=$(comm -23 <(echo "$apex_ips") <(echo "$app_ips"))
+          if [ -z "$apex_ips" ] || [ -n "$stale" ]; then
+            new_ip=$(echo "$app_ips" | head -1)
+            echo "::error title=Update GoDaddy DNS::$APEX points to '$(echo $apex_ips)' but the app is now at '$new_ip'. In GoDaddy DNS, set the A record for @ to $new_ip."
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Action needed:** in GoDaddy DNS, change the \`A @\` record to \`$new_ip\`." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "All good: $APEX points at the app."
+
+      - name: Check the bare domain answers over HTTPS
+        run: |
+          code=$(curl -s -o /dev/null --max-time 15 -w '%{http_code}' "https://$APEX/" || echo 000)
+          echo "https://$APEX/ -> $code"
+          echo "HTTPS status for \`https://$APEX/\`: **$code**" >> "$GITHUB_STEP_SUMMARY"
+          case "$code" in
+            2*|3*) echo "HTTPS OK" ;;
+            *) echo "::error title=Bare domain not loading::https://$APEX/ returned $code. Check the A record and the custom domain status in Azure."; exit 1 ;;
+          esac
