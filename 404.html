@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Page not found · Tusshar Raj Gupta</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f25002'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%23fff' text-anchor='middle'%3ETRG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script>
+    // same theme + accent the visitor picked on the main site
+    (function () {
+      var d = document.documentElement, t = null, a = 0;
+      try { t = localStorage.getItem("theme"); a = +(localStorage.getItem("accent") || 0); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      d.dataset.theme = t;
+      var p = [["#f25002", "#ffb347"], ["#7c5cff", "#3ee0cf"], ["#00c27a", "#c6ff5e"], ["#ff2e7e", "#ffa8c5"], ["#1e9bff", "#7ee8fa"]][a % 5] || ["#f25002", "#ffb347"];
+      d.style.setProperty("--accent", p[0]); d.style.setProperty("--accent-2", p[1]);
+    })();
+  </script>
+  <style>
+    :root { --accent: #f25002; --accent-2: #ffb347; --bg: #0b0b0f; --panel: #15151d; --line: rgba(255,255,255,.08); --text: #f2f2f5; --muted: #9a9aab; --ease: cubic-bezier(.22,1,.36,1); }
+    :root[data-theme="light"] { --bg: #f5f3ef; --panel: #ffffff; --line: rgba(20,20,35,.1); --text: #16161d; --muted: #5c5c6b; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; overflow: hidden;
+      background: var(--bg); color: var(--text); font-family: "Space Grotesk", -apple-system, "Segoe UI", sans-serif; text-align: center;
+    }
+    .glow { position: fixed; width: 70vmax; height: 70vmax; border-radius: 50%; left: 50%; top: 50%; translate: -50% -50%; pointer-events: none;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%); filter: blur(40px); animation: float 10s ease-in-out infinite; }
+    @keyframes float { 50% { translate: -44% -56%; scale: 1.1; } }
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    main { position: relative; max-width: 620px; }
+    .code { font-family: "JetBrains Mono", monospace; color: var(--accent); letter-spacing: 3px; font-size: 14px; margin-bottom: 8px; }
+    h1 { position: relative; font-size: clamp(110px, 28vw, 220px); line-height: .9; font-weight: 700; letter-spacing: -.05em; }
+    h1 span { display: inline-block; animation: drop 1s var(--ease) both; }
+    h1 span:nth-child(2) { color: transparent; -webkit-text-stroke: 3px var(--text); animation-delay: .12s; }
+    h1 span:nth-child(3) { animation-delay: .24s; }
+    @keyframes drop { from { transform: translateY(-60px) rotate(-8deg); opacity: 0; } }
+    h1 span:nth-child(2) { animation: drop 1s var(--ease) .12s both, wobble 3.2s ease-in-out 1.2s infinite; }
+    @keyframes wobble { 50% { transform: rotate(-10deg) translateY(-6px); } }
+    h2 { font-size: clamp(22px, 4vw, 30px); margin: 18px 0 8px; }
+    p { color: var(--muted); }
+    .term { margin: 26px auto 30px; max-width: 460px; text-align: left; padding: 14px 18px; border-radius: 12px; background: #0d0f14; color: #d8dbe3;
+      border: 1px solid rgba(255,255,255,.08); font-family: "JetBrains Mono", monospace; font-size: 13px; line-height: 1.7; box-shadow: 0 20px 50px -25px rgba(0,0,0,.6); }
+    .term .p { color: var(--accent); }
+    .term .e { color: #ff7b72; }
+    .term .ok { color: #7ee787; }
+    .cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    a.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 500; text-decoration: none; transition: transform .4s var(--ease), background .3s, color .3s, border-color .3s; }
+    a.btn:hover { transform: translateY(-3px); }
+    .fill { background: var(--accent); color: #fff; box-shadow: 0 10px 40px -10px var(--accent); }
+    .ghost { border: 1.5px solid var(--line); color: var(--text); }
+    .ghost:hover { border-color: var(--accent); color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <main>
+    <p class="code">&lt; error /&gt;</p>
+    <h1 aria-label="404"><span>4</span><span>0</span><span>4</span></h1>
+    <h2>This page drifted off into space.</h2>
+    <p>The link may be old, or the page never existed.</p>
+
+    <div class="term" aria-hidden="true">
+      <div><span class="p">guest@tusshar:~$</span> cd <span id="path">/this-page</span></div>
+      <div class="e">cd: no such file or directory</div>
+      <div><span class="p">guest@tusshar:~$</span> cd ~ <span class="ok">← try this instead</span></div>
+      <div><span class="p">guest@tusshar:~$</span> <span class="cursor"></span></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn fill" href="/">← Back to home</a>
+      <a class="btn ghost" href="/#projects">See my projects</a>
+      <a class="btn ghost" href="/#contact">Contact me</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var path = location.pathname.length > 1 ? location.pathname : "/this-page";
+      document.getElementById("path").textContent = path.length > 32 ? path.slice(0, 31) + "…" : path;
+
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var c = document.getElementById("stars"), x = c.getContext("2d"), W, H, s = [];
+      var light = document.documentElement.dataset.theme === "light";
+      function size() {
+        var r = Math.min(devicePixelRatio || 1, 2);
+        W = c.offsetWidth; H = c.offsetHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+        s = Array.from({ length: Math.min(180, (W * H) / 7000 | 0) }, function () {
+          return { x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3, v: Math.random() * .25 + .05, p: Math.random() * 6 };
+        });
+      }
+      var t = 0;
+      (function draw() {
+        t += .02; x.clearRect(0, 0, W, H);
+        for (var i = 0; i < s.length; i++) {
+          var p = s[i]; p.y -= p.v; if (p.y < -2) { p.y = H + 2; p.x = Math.random() * W; }
+          x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283);
+          x.fillStyle = light ? "rgba(22,22,29," + (.15 + .25 * Math.abs(Math.sin(t + p.p))) + ")" : "rgba(255,255,255," + (.25 + .6 * Math.abs(Math.sin(t + p.p))) + ")";
+          x.fill();
+        }
+        requestAnimationFrame(draw);
+      })();
+      size(); addEventListener("resize", size);
+    })();
+  </script>
+</body>
+</html>

@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# tusharrajgupta.in
 
-## Getting Started
+Personal portfolio of Tusshar Raj Gupta: a single-page site written in plain HTML, CSS and JavaScript, with no framework and no build step.
 
-First, run the development server:
+## Files
+
+| File | What it is |
+|---|---|
+| `index.html` | All page content and sections |
+| `styles.css` | Layout, themes (light/dark) and animations |
+| `script.js` | Interactions: live GitHub data, terminal easter egg, space mode, contact card, filters |
+| `404.html` | Page shown for missing URLs |
+| `staticwebapp.config.json` | Azure Static Web Apps settings (404 page, MIME types, headers) |
+| `robots.txt`, `sitemap.xml` | For search engines |
+| `og-image.png` | Link preview image for social sharing |
+| `Tushar-Raj-Gupta-Resume.pdf` | Resume; source is `resume/resume.html` |
+| `images/` | Project screenshots |
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
+python3 -m http.server 5173
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:5173.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Deploy
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Pushing to `master` deploys to Azure Static Web Apps via the GitHub Actions workflow in `.github/workflows/`. The site is deployed as-is (`skip_app_build: true`).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Regenerate the resume PDF
 
-## Learn More
+After editing `resume/resume.html`, run this from the project folder:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf="Tushar-Raj-Gupta-Resume.pdf" "file://$PWD/resume/resume.html"
+```
