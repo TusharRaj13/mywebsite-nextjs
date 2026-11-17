@@ -607,7 +607,7 @@
   const downloadVcf = async () => {
     let photo = "";
     try {
-      const blob = await fetch("profile_img.jpg").then((r) => (r.ok ? r.blob() : Promise.reject()));
+      const blob = await fetch("tushar-raj-gupta.jpg").then((r) => (r.ok ? r.blob() : Promise.reject()));
       photo = await new Promise((res) => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1] || ""); fr.readAsDataURL(blob); });
     } catch (_) {}
     const url = URL.createObjectURL(new Blob([vcardText(photo)], { type: "text/vcard;charset=utf-8" }));
