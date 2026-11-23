@@ -1068,3 +1068,11 @@ main:focus { outline: none; }
 
 /* portrait photo in square frames: keep the face in view */
 .photo-frame img, .bcard__photo { object-position: 50% 22%; }
+
+/* featured wide game card (spans the whole row) */
+.xbox__games .game--wide { grid-column: 1 / -1; }
+.game--wide .game__art { aspect-ratio: 21 / 9; }
+.game--wide .game__art img { object-position: center 35%; }
+.game--wide .game__name { font-size: 15px; }
+.game[data-game="gta6"] { --g1: #ff4fa3; --g2: #3b1a6b; }
+.xbox.in .game:nth-child(7) { transition-delay: .63s, .63s, .63s, 0s, 0s, 0s, 0s; }
