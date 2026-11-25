@@ -696,7 +696,8 @@ ${link("https://tusharraj13.github.io/HTML-Editor/", "HTML Editor")}            
 linkedin   ${link(CONTACT.linkedin, "linkedin.com/in/tusshar-raj-gupta")}
 twitter    ${link("https://twitter.com/TusharRajGupta", "twitter.com/TusharRajGupta")}
 xbox       ${link(CONTACT.xbox, "FadelessFiber98")}
-instagram  ${link("https://www.instagram.com/tusharraj13/", "instagram.com/tusharraj13")}`),
+instagram  ${link("https://www.instagram.com/tusharraj13/", "instagram.com/tusharraj13")}
+about.me   ${link("https://about.me/tusharraj13", "about.me/tusharraj13")}`),
       github: () => { print("Opening GitHub…", "ok"); open(CONTACT.github); },
       linkedin: () => { print("Opening LinkedIn…", "ok"); open(CONTACT.linkedin); },
       xbox: () => { print("Opening Xbox profile… 🎮", "ok"); open(CONTACT.xbox); },
