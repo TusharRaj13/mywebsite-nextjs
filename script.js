@@ -562,7 +562,7 @@
     first: "Tusshar Raj", last: "Gupta", full: "Tusshar Raj Gupta",
     org: "CYFIRMA", title: "Senior Software Engineer",
     email: "tussharrajgupta@outlook.com", site: "https://www.tusharrajgupta.in",
-    linkedin: "https://www.linkedin.com/in/tushar-raj-gupta-8b944213a/",
+    linkedin: "https://www.linkedin.com/in/tusshar-raj-gupta-8b944213a/",
     github: "https://github.com/TusharRaj13",
     xbox: "https://www.xbox.com/en-IN/play/user/FadelessFiber98",
     resume: "Tushar-Raj-Gupta-Resume.pdf",
@@ -693,7 +693,7 @@ ${link("https://tusharraj13.github.io/HTML-Editor/", "HTML Editor")}            
       vcard: () => FILES["contact.vcf"](),
       social: () => print(
 `github     ${link(CONTACT.github, "github.com/TusharRaj13")}
-linkedin   ${link(CONTACT.linkedin, "linkedin.com/in/tushar-raj-gupta")}
+linkedin   ${link(CONTACT.linkedin, "linkedin.com/in/tusshar-raj-gupta")}
 twitter    ${link("https://twitter.com/TusharRajGupta", "twitter.com/TusharRajGupta")}
 xbox       ${link(CONTACT.xbox, "FadelessFiber98")}
 instagram  ${link("https://www.instagram.com/tusharraj13/", "instagram.com/tusharraj13")}`),
